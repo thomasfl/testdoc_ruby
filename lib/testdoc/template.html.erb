@@ -1,0 +1,61 @@
+<% testplans.each do |testplan| %>
+<% if testplan.title != nil %><h2><%= testplan.title %><% end %></h2>
+<% if testplan.comments != nil %><p><%= testplan.comments %><% end %></p>
+<% if (testplan.tests == nil) then
+     exit(0)
+   end %>
+   <table cellpadding="3" border="1" width="80%">
+   <tr align="left">
+       <td><b>Nr</b>
+       <td><b>Betegnelse</b></td>
+       <td><b>Aksjoner</b></td>
+       <td><b>Sjekkliste</b></td>
+       <td><b>Resultat</b></td>
+   </tr>
+<%testplan.tests.each do |test| %>
+
+   <tr valign="top">
+       <td<%if(test.tasks.size > 1)%> rowspan="<%=test.number_of_checks%>"<%end%>><%=test.id%></td>
+       <td<%if(test.tasks.size > 1)%> rowspan="<%=test.number_of_checks%>"<%end%>><%=test.title%></td>
+ <%if (test.tasks.size == 0)%>
+
+       <td>&nbsp;</td>
+       <td>&nbsp;</td>
+       <td>&nbsp;</td>
+   </tr>
+ <%end%>
+ <%task_count = 0%>
+ <%test.tasks.each do |task| %>
+    <%task_count += 1%>
+
+       <td<%if(task.checks.size > 1)%> rowspan="<%=test.tasks.size %>"<%end%>><i><%=task.id%></i>:<%=task.title%> </td>
+    <%if (task.checks.size == 0)%>
+
+       <td>&nbsp;</td>
+       <td>&nbsp;</td>
+   </tr>
+
+     <%if(test.tasks.size > task_count)%>
+
+   <tr valign="top">
+     <%end%>
+   <%end%>
+   <%checks_count=0%>
+   <%task.checks.each do |check| %>
+     <%checks_count += 1%>
+
+       <td><i><%=check.id%></i>: <%=check.title %></td>
+       <td>&nbsp;</td>
+   </tr>
+         <%if( task.checks.size > checks_count || test.tasks.size > task_count)%>
+
+   <tr>
+         <%end%>
+    <%end%>
+  <%end%>
+<%end%>
+
+</table>
+<%end%>
+
+

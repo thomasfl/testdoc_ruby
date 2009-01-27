@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+ 
+require 'rubygems'
+require 'testdoc'
+ 
+if %w(-v --version).include? ARGV.first
+  require File.dirname(__FILE__) + "/../lib/testdoc"
+  puts "#{File.basename($0)} #{TestDoc::VERSION}"
+  
+  exit(0)
+end
+
+require File.dirname(__FILE__) + "/../lib/testdoc_module"
+
+t = TestDoc::TestDoc.new
+t.document(ARGV)
