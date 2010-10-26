@@ -7,3 +7,10 @@
 
 * 1 major enhancement:
   * Initial release
+
+== 0.0.3 2009-01-27
+
+* 1 major enhancement:
+  * Fixed bug in html template
+  * Removed column for writing notes on printed report
+
