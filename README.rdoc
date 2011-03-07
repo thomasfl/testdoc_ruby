@@ -4,9 +4,9 @@
 
 == DESCRIPTION:
 
-Generate testplans from annotated sourcecode. 
+Generate testplans from annotated sourcecode.
 
-Author: Thomas Flemming, thomasfl(snabela)usit.uio.no
+Author: Thomas Flemming, thomas.flemming (at) gmail.com
 
 == FEATURES/PROBLEMS:
 
@@ -14,7 +14,7 @@ Author: Thomas Flemming, thomasfl(snabela)usit.uio.no
 
 == SYNOPSIS:
 
-Examples: 
+Examples:
 
  $testdoc
  $testdoc rubyfil.rb
@@ -24,19 +24,24 @@ Examples:
 
 Sample ruby sourcecode annotations:
 
-   # testplan: Title
-   # test: Title
-   # task: Title
-   #       multiline
-   # check: Title
+   # @testplan: Title
+   class MyTests
 
+     # @test: Title
+     should "Login " do
+       # @task: Title
+       #       multiline
+       # @check: Title
+     end
+
+   end
 Syntax:
 
-   TESTPLAN => [#testplan: .*] TESTS
-   TEST     => '#test:' TITLE TASKS*
+   TESTPLAN => [@testplan: .*] TESTS
+   TEST     => '@test:' TITLE TASKS*
    TITLE    => .*\n [#.*]*
-   TASKS    => '#task:' CHECKS* *
-   CHECKS   => '#checks' TITLE
+   TASKS    => '@task:' CHECKS* *
+   CHECKS   => '@checks' TITLE
 
 == REQUIREMENTS:
 
@@ -50,7 +55,7 @@ Syntax:
 
 (The MIT License)
 
-Copyright (c) 2009 TestDoc
+Copyright (c) 2009 Thomas Flemming
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
