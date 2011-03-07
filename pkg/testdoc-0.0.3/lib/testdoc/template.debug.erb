@@ -1,0 +1,21 @@
+<% testplans.each do |testplan| %>
+<% if testplan.title != nil %>
+testplan:<%= testplan.title %>
+<% end %>
+
+<% testplan.tests.each do |test| %>
+  test: <%=test.title%> (id:<%=test.id%> tasks:<%=test.tasks.size%>)    checks:<%=test.number_of_checks%>
+
+<% test.tasks.each do |task| %>
+      task: <%=task.title%> (id:<%=task.id%>)
+<%if (task.checks == nil)%>
+          check: NIL
+<%end%>
+<% task.checks.each do |check| %>
+          check:<%=check.title %> (id:<%=check.id%>)
+
+<% end %>
+<% end %>
+<% end %>
+<% end %>
+
