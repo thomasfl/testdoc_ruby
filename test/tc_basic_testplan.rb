@@ -12,12 +12,10 @@ class TestCaseBasicTestplanc < Test::Unit::TestCase
     assert true
 
     t = TestDoc::TestDoc.new
-    t.document(ARGV)
-
-    ## Hvordan skal vi teste dette???
-    # 1. Gjøre testdoc biblioteket mer testbart
-    #    - gi output til stdout med egen switch
-
+    t.document(['sample_source.txt'])
+    # html = IO.readlines('testplan.html','r').to_s
+    # puts 'DEBUG: "'+ html + '"'
+    # puts html
   end
 
 end

@@ -3,7 +3,7 @@ $:.unshift(File.dirname(__FILE__)) unless
 
 
 module TestDoc
-  VERSION = '0.0.3'
+  VERSION = '0.1.0'
 
 end
 

@@ -5,11 +5,6 @@ module TestDoc
   require File.dirname(__FILE__) +  '/testdoc/testdocoptions'
   require File.dirname(__FILE__) +  '/testdoc/testdocparser'
 
-
-
-# module TestDoc
-
-
   class TestDoc
 
     GENERATORS = {} # Not in use
@@ -56,15 +51,13 @@ module TestDoc
           @num_files += 1
         end
 
-        # basename = File.basename(fn).split("\.")[0]
-        # puts "DEBUG" + basename + ".html"
       end
 
       if(not options.quiet) then
         puts ''
         puts ''
         puts 'Generating TestDoc HTML: testplan.html...'
-        # puts "Files:   #@num_files"
+
         puts "Parsed files: #@num_files"
       end
 
@@ -106,19 +99,19 @@ module TestDoc
       content.split(/\n/).map do |line|
         line_number = line_number + 1
 
-        if line =~ /.*#.*test:(.*)/i then
+        if line =~ /.*#.*@test (.*)/i then
           symbol = :test
           testdoc_array[counter] = [:test,$1.gsub(/^\s+/, ""),line_number]
           counter = counter + 1
-        elsif line =~ /.*#.*task:(.*)/i then
+        elsif line =~ /.*#.*@task (.*)/i then
           testdoc_array[counter] = [:task,$1.gsub(/^\s+/, ""),line_number]
           counter = counter + 1
           symbol = :task
-        elsif line =~ /.*#.*check:(.*)/i then
+        elsif line =~ /.*#.*@check (.*)/i then
           testdoc_array[counter] = [:check,$1.gsub(/^\s+/, ""),line_number]
           counter = counter + 1
           symbol = :check
-        elsif line =~ /.*#.*testplan:(.*)/i then
+        elsif line =~ /.*#.*@testplan (.*)/i then
           testdoc_array[counter] = [:testplan,$1.gsub(/^\s+/, "") + "#",line_number]
           counter = counter + 1
           symbol = :testplan
@@ -136,7 +129,6 @@ module TestDoc
 
     # Given a list of files and directories, create a list
     # of all the Ruby files they contain.
-
     def normalized_file_list(options, relative_files, force_doc = false, exclude_pattern=nil)
       file_list = []
 

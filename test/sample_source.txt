@@ -1,0 +1,14 @@
+#@testplan Sample source XYZ
+#Here is a normal comment
+# @test Test 1 XYZ
+# @test Test 2  XYZ
+ # @task Task 2.1  XYZ
+# @test Test 3  XYZ
+ # @task Task 3.1  XYZ
+ # @task Task 3.2  XYZ
+# @test Test 4  XYZ
+ # @task Task 4.1  XYZ
+   # @check Check 4.1.1  XYZ
+   # @check Check 4.1.2 XYZ
+ # @task Task 4.2  XYZ
+   # @check Check 4.2.1  XYZ
